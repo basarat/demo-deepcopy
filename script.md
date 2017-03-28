@@ -53,7 +53,8 @@ Fortunately for simple objects you can create a simple function to do this for y
 * Within the function we simply stringify the object 
 * and then convert this string back to a new object
 * Now we can use this function to create our clone 
-* and you can see our clone works as expected 
+* and if we go ahead and mutate the clone 
+* the original object stays intact.
 ```js
 function deepcopy<T>(o: T): T {
   return JSON.parse(JSON.stringify(o));
@@ -69,3 +70,5 @@ const bar = deepcopy(foo);
 bar.x.y.z = 456;
 console.log(foo);
 ```
+
+Note that since this deepcopy function using JSON.stringify underneath, it will only work for simple objects and not for objects cannot be serialized to strings reliable e.g. objects containing functions or cyclic data structures.

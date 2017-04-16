@@ -3,7 +3,9 @@
 
 Here we have a simple object foo
 ```js
-const foo = { x: 123 };
+const foo = {
+  x: 123
+};
 ```
 If we assign it to another variable
 
@@ -11,22 +13,28 @@ If we assign it to another variable
 const bar = foo;
 ```
 
-It is essentially a reference to the same object in memory. 
-* So if we mutate the x property of `bar`, 
+***Select const bar = foo***
+* It is essentially a reference to the same object in memory.
+
+* So if we mutate the x property of `bar`,
 * `foo.x` is also changed.
 ```js
 bar.x = 456;
 console.log(foo.x);
 ```
-To create a *copy* of the object we can do it manually: 
+To create a *copy* of the object we can do it manually:
 
 ```js
-const foo = { x: 123 };
-const bar = { x: foo.x };
+const foo = {
+  x: 123
+};
+const bar = {
+  x: foo.x
+};
 bar.x = 456;
 console.log(foo.x);
 ```
-But doing this for deep objects e.g. 
+But doing this for deep objects e.g.
 * a property x that has a property y that has a property z
 * in a new varible bar
 ```js
@@ -45,15 +53,17 @@ const bar = {
   }
 };
 ```
-Is time consuming and painful. 
+Is time consuming and painful.
 
-Fortunately for simple objects you can create a simple function to do this for you. 
+***Select the object bar***
+* Fortunately for simple objects you can create a simple function to do this for you.
+
 * We go ahead and create a deep copy function which is generic.
-* It takes an object o of type T and returns an object of type t 
-* Within the function we simply stringify the object 
+* It takes an object o of type T and returns an object of type t
+* Within the function we simply stringify the object
 * and then convert this string back to a new object
-* Now we can use this function to create our clone 
-* and if we go ahead and mutate the clone 
+* Now we can use this function to create our clone
+* and if we go ahead and mutate the clone
 * the original object stays intact.
 ```js
 function deepcopy<T>(o: T): T {
@@ -71,4 +81,5 @@ bar.x.y.z = 456;
 console.log(foo);
 ```
 
-Note that since this deepcopy function using JSON.stringify underneath, it will only work for simple objects and not for objects cannot be serialized to strings reliable e.g. objects containing functions or cyclic data structures.
+***Select the deepcopy implementation***
+* Note that since this deepcopy function using JSON.stringify underneath, it will only work for simple objects and not for objects cannot be serialized to strings reliable e.g. objects containing functions or cyclic data structures.

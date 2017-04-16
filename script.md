@@ -36,7 +36,7 @@ console.log(foo.x);
 ```
 But doing this for deep objects e.g.
 * a property x that has a property y that has a property z
-* in a new varible bar
+* in a new variable bar
 ```js
 const foo = {
   x: {
@@ -53,7 +53,7 @@ const bar = {
   }
 };
 ```
-Is time consuming and painful.
+Is error prone, time consuming and painful.
 
 ***Select the object bar***
 * Fortunately for simple objects you can create a simple function to do this for you.
@@ -82,4 +82,4 @@ console.log(foo);
 ```
 
 ***Select the deepcopy implementation***
-* Note that since this deepcopy function using JSON.stringify underneath, it will only work for simple objects and not for objects cannot be serialized to strings reliable e.g. objects containing functions or cyclic data structures.
+* Note that since this deepcopy function using JSON.stringify underneath, it will only work for simple objects and not for objects cannot be serialized to strings e.g. objects containing functions or cyclic data structures.

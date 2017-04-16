@@ -8,6 +8,6 @@ const foo = {
     }
   }
 };
-const bar = deepcopy(foo)
+const bar = deepcopy(foo);
 bar.x.y.z = 456;
 console.log(foo);
